@@ -21,14 +21,17 @@ const loadCategoryInfo = (categoryId) => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => displayCategoryInfo(data.data))
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));   
+    const spinner = document.getElementById("spinner");
+    spinner.classList.remove = "d-none" 
 };
 
+
+
 const displayCategoryInfo = (informations) => {
+
   const card = document.getElementById("card");
   informations.forEach((information) => {
-    console.log(information);
-   
     const div = document.createElement("div");
     div.classList.add("row");
     div.classList.add("mb-2");
@@ -65,12 +68,13 @@ const displayCategoryInfo = (informations) => {
       </div>
       `;
     card.appendChild(div);
+    // spinner.classList.add = "d-none"
   });
 };
 const showModal = (name, view) => {
  const modalBody = document.getElementById("modal-body");
  modalBody.innerHTML = `
- <p>Author Name: ${name === null? "No data Available" : "Name already has in card"}</p>
+ <p>Author Name: ${name === null ? "No data Available" : "Name already has in card"}</p>
  <p>Total View: ${view === null ? "No view till now" : "view has already in card"}</p>
  `
 }
