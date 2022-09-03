@@ -20,13 +20,15 @@ const loadCategoryInfo = (categoryId) => {
   const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayCategoryInfo(data.data));
+    .then((data) => displayCategoryInfo(data.data))
+    .catch(err => console.log(err))
 };
 
 const displayCategoryInfo = (informations) => {
   const card = document.getElementById("card");
   informations.forEach((information) => {
-    console.log(information)
+    console.log(information);
+   
     const div = document.createElement("div");
     div.classList.add("row");
     div.classList.add("mb-2");
@@ -47,15 +49,15 @@ const displayCategoryInfo = (informations) => {
                     <img height = "50px" width = "50px"class = "rounded-circle me-2" src = "${information.author.img}"/>
                     </div>
                     <div>
-                    <p>${information.author.name?information.author.name : "name is not found" }</p>
+                    <p>${information.author.name ? information.author.name : undefined}</p>
                     <p class = "text-secondary">${information.author.published_date? information.author.published_date : "date is not found"}</p>
                     </div>
                   </div>
-                    <p><i class="fa-solid fa-eye"></i>${information.total_view + "k"}</p>
+                    <p><i class="fa-solid fa-eye"></i>${information.total_view ? information.total_view+ "k" : undefined}</p>
                   <div>
+                   
+                    <button type="button" onclick = "showModal(${information.author.name} , ${information.total_view})" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <i class="fas fa-arrow-circle-right"></i>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                       Launch demo modal
                       </button> 
                   </div>
               </div>
@@ -65,27 +67,12 @@ const displayCategoryInfo = (informations) => {
     card.appendChild(div);
   });
 };
-
-// const modalOpen = () => {
-//     const modal = document.getElementById("modal");
-//     const div = document.createElement("div");
-//     div.classList.add("modal-dialog")
-//     div.innerHTML = `
-//     <div class="modal-content">
-//     <div class="modal-header">
-//       <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-//       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-//     </div>
-//     <div class="modal-body">
-//       ...
-//     </div>
-//     <div class="modal-footer">
-//       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-//       <button type="button" class="btn btn-primary">Save changes</button>
-//     </div>
-//   </div>
-//     `;
-//     modal.appendChild(div)
-// }
+const showModal = (name, view) => {
+ const modalBody = document.getElementById("modal-body");
+ modalBody.innerHTML = `
+ <p>Author Name: ${name === undefined? "No data Available" : "Name already has in card"}</p>
+ <p>Total View: ${view === undefined ? "No view till now" : "view has already in card"}</p>
+ `
+}
 
 loadCategory();
