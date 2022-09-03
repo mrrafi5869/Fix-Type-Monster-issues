@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>news 24</title>
+    <script src="https://kit.fontawesome.com/c0bc7ee9f7.js" crossorigin="anonymous"></script>
     <!-- css -->
     <link rel="stylesheet" href="style.css">
     <!-- bootstrap -->
@@ -16,8 +17,8 @@
             <div class="container-fluid">
               <a class="navbar-brand"><span class="bg-primary text-white rounded p-2 fs-2">News</span> <span class="text-warning fw-bolder fs-3">24</span></a>
               <form class="d-flex" role="search">
-                <a href="#" class="fw-bold text-decoration-underline text-primary me-4 p-2 rounded-2 fs-5">News</a>
-                <button class="btn btn-secondary fw-bold" type="submit">Blog</button>
+              <a href="#" class="fw-bold text-decoration-underline text-primary me-4 p-2 rounded-2 fs-5">News</a>
+              <button class="btn btn-secondary fw-bold" type="submit">Blog</button>
                 <img src="image/download.jpg" class="rounded-circle ms-5" width="50px" height="50px" alt="">
               </form>
             </div>
@@ -26,23 +27,51 @@
         <!-- navbar endse here -->
     </header>
     <main>
+        
         <!-- category starts from here -->
-        <section class="d-flex justify-content-between my-3">
-            <a href="#" class="text-decoration-none text-secondary fs-4">Home</a>
-            <a href="#" class="text-decoration-none text-secondary fs-4">Breaking News</a>
-            <a href="#" class="text-decoration-none text-secondary fs-4">Regular News</a>
-            <a href="#" class="text-decoration-none text-secondary fs-4">International News</a>
-            <a href="#" class="text-decoration-none text-secondary fs-4">Sports</a>
-            <a href="#" class="text-decoration-none text-secondary fs-4">Entertaiment</a>
-            <a href="#" class="text-decoration-none text-secondary fs-4">Culture</a>
-            <a href="#" class="text-decoration-none text-secondary fs-4">Art</a>
-            <a href="#" class="text-decoration-none text-secondary fs-4">All News</a>
+        <section id="categories" class="d-flex justify-content-between my-3">
         </section>
-        <!-- category ends from here -->
+        <div>
+            <input type="text" class="bg-white shadow-lg rounded mt-4 border-0 p-3 w-100">
+        </div>
+        <!-- category ends here -->
+        <!-- category info starts here  -->
+        <section>
+            <div id="card" class="my-3">
+                
+              </div>
+        </section>
+
+        <section>
+
+
+<!-- Modal -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+        </section>
     </main>
 
 
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="js/index.js"></script>
 </body>
