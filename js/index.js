@@ -49,11 +49,11 @@ const displayCategoryInfo = (informations) => {
                     <img height = "50px" width = "50px"class = "rounded-circle me-2" src = "${information.author.img}"/>
                     </div>
                     <div>
-                    <p>${information.author.name ? information.author.name : undefined}</p>
+                    <p>${information.author.name}</p>
                     <p class = "text-secondary">${information.author.published_date? information.author.published_date : "date is not found"}</p>
                     </div>
                   </div>
-                    <p><i class="fa-solid fa-eye"></i>${information.total_view ? information.total_view+ "k" : undefined}</p>
+                    <p><i class="fa-solid fa-eye"></i>${information.total_view ? information.total_view+ "k" : null}</p>
                   <div>
                    
                     <button type="button" onclick = "showModal(${information.author.name} , ${information.total_view})" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -70,8 +70,8 @@ const displayCategoryInfo = (informations) => {
 const showModal = (name, view) => {
  const modalBody = document.getElementById("modal-body");
  modalBody.innerHTML = `
- <p>Author Name: ${name === undefined? "No data Available" : "Name already has in card"}</p>
- <p>Total View: ${view === undefined ? "No view till now" : "view has already in card"}</p>
+ <p>Author Name: ${name === null? "No data Available" : "Name already has in card"}</p>
+ <p>Total View: ${view === null ? "No view till now" : "view has already in card"}</p>
  `
 }
 
