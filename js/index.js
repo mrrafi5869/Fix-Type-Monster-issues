@@ -26,6 +26,7 @@ const loadCategoryInfo = (categoryId) => {
 };
 
 const displayCategoryInfo = (informations) => {
+  informations.sort(function(a, b){return b.total_view - a.total_view})
   const card = document.getElementById("card");
   informations.map((information) => {
     const div = document.createElement("div");
@@ -83,8 +84,7 @@ const displayCategoryInfo = (informations) => {
           </div>
       </div>
       `;
-    information.sort(function(a, b){return a.total_view - b.total_view})
-
+      
       card.appendChild(div);
     const categoriesNumber = document.getElementById("categories-number");
     categoriesNumber.value = informations.length + " items found"
