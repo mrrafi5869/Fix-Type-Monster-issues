@@ -72,11 +72,8 @@ const displayCategoryInfo = (informations) => {
                     }</p>
                   <div>
                    
-                    <button type="button" onclick = "showModal(${
-                      information.author.name
-                    } , ${
-      information.total_view
-    })" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" onclick = "showModal('${information.author.img}','${information.title}','${information.author.name}' , '${information.total_view}')"
+                     class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <i class="fas fa-arrow-circle-right"></i>
                       </button> 
                   </div>
@@ -96,15 +93,13 @@ const displayCategoryInfo = (informations) => {
 
 
 
-const showModal = (name, view) => {
+const showModal = (img,name, view, title) => {
   const modalBody = document.getElementById("modal-body");
   modalBody.innerHTML = `
- <p>Author Name: ${
-   name === null ? "No data Available" : "Name already has in card"
- }</p>
- <p>Total View: ${
-   view === null ? "No view till now" : "view has already in card"
- }</p>
+  <img class = "img-fluid" src = "${img}"/>
+ <p>Title: ${title}</p>
+ <p>Author Name: ${name}</p>
+ <p>Total View: ${view}</p>
  `;
 };
 
