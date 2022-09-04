@@ -84,9 +84,15 @@ const displayCategoryInfo = (informations) => {
       </div>
       `;
     card.appendChild(div);
+    const categoriesNumber = document.getElementById("categories-number");
+    categoriesNumber.value = informations.length + " items found"
   });
   toggleSpinner(false);
+  
 };
+
+
+
 const showModal = (name, view) => {
   const modalBody = document.getElementById("modal-body");
   modalBody.innerHTML = `
