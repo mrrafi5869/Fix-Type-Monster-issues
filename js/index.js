@@ -21,15 +21,11 @@ const loadCategoryInfo = (categoryId) => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => displayCategoryInfo(data.data))
-    .catch(err => console.log(err));   
-    const spinner = document.getElementById("spinner");
-    spinner.classList.remove = "d-none" 
+    .catch((err) => console.log(err));
+    toggleSpinner(true);
 };
 
-
-
 const displayCategoryInfo = (informations) => {
-
   const card = document.getElementById("card");
   informations.forEach((information) => {
     const div = document.createElement("div");
@@ -39,27 +35,47 @@ const displayCategoryInfo = (informations) => {
     div.classList.add("p-1");
     div.innerHTML = `
       <div class="col-md-4">
-          <img src="${information.thumbnail_url}" class="img-fluid rounded-start" alt="">
+          <img src="${
+            information.thumbnail_url
+          }" class="img-fluid rounded-start" alt="">
       </div>
       <div class="col-md-8">
           <div class="card-body">
               <h5 class="card-title mb-3">${information.title}</h5>
-              <p class="card-text text-secondary">${information.details.length > 600 ? information.details.slice(0, 600) + "..." : information.details}</p>
+              <p class="card-text text-secondary">${
+                information.details.length > 600
+                  ? information.details.slice(0, 600) + "..."
+                  : information.details
+              }</p>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
               <div class = "d-flex justify-content-between">
                   <div class= "d-flex">
                     <div>
-                    <img height = "50px" width = "50px"class = "rounded-circle me-2" src = "${information.author.img}"/>
+                    <img height = "50px" width = "50px"class = "rounded-circle me-2" src = "${
+                      information.author.img
+                    }"/>
                     </div>
                     <div>
                     <p>${information.author.name}</p>
-                    <p class = "text-secondary">${information.author.published_date? information.author.published_date : "date is not found"}</p>
+                    <p class = "text-secondary">${
+                      information.author.published_date
+                        ? information.author.published_date
+                        : "date is not found"
+                    }</p>
                     </div>
                   </div>
-                    <p><i class="fa-solid fa-eye"></i>${information.total_view ? information.total_view+ "k" : null}</p>
+                    <p><i class="fa-solid fa-eye"></i>${
+                      information.total_view
+                        ? information.total_view + "k"
+                        : null
+                    }</p>
                   <div>
                    
-                    <button type="button" onclick = "showModal(${information.author.name} , ${information.total_view})" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" onclick = "showModal(${
+                      information.author.name
+                    } , ${
+      information.total_view
+    })" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <i class="fas fa-arrow-circle-right"></i>
                       </button> 
                   </div>
@@ -68,15 +84,28 @@ const displayCategoryInfo = (informations) => {
       </div>
       `;
     card.appendChild(div);
-    // spinner.classList.add = "d-none"
   });
+  toggleSpinner(false);
 };
 const showModal = (name, view) => {
- const modalBody = document.getElementById("modal-body");
- modalBody.innerHTML = `
- <p>Author Name: ${name === null ? "No data Available" : "Name already has in card"}</p>
- <p>Total View: ${view === null ? "No view till now" : "view has already in card"}</p>
- `
-}
+  const modalBody = document.getElementById("modal-body");
+  modalBody.innerHTML = `
+ <p>Author Name: ${
+   name === null ? "No data Available" : "Name already has in card"
+ }</p>
+ <p>Total View: ${
+   view === null ? "No view till now" : "view has already in card"
+ }</p>
+ `;
+};
+
+const toggleSpinner = (isLoading) => {
+  const loader = document.getElementById("loader");
+  if (isLoading) {
+    loader.classList.remove("d-none");
+  } else {
+    loader.classList.add("d-none");
+  }
+};
 
 loadCategory();
