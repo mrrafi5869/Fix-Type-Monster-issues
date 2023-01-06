@@ -28,7 +28,8 @@ const loadCategoryInfo = (categoryId) => {
 const displayCategoryInfo = (informations) => {
   informations.sort(function(a, b){return b.total_view - a.total_view})
   const card = document.getElementById("card");
-  informations.map((information) => {
+  card.innerHTML = "";
+  informations.filter((information) => {
     const div = document.createElement("div");
     div.classList.add("row");
     div.classList.add("mb-2");
@@ -86,9 +87,7 @@ const displayCategoryInfo = (informations) => {
     const categoriesNumber = document.getElementById("categories-number");
     categoriesNumber.value = informations.length + " items found"
   });
-  toggleSpinner(false);
-
-  
+  toggleSpinner(false);  
 };
 
 
